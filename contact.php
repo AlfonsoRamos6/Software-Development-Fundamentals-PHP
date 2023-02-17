@@ -33,6 +33,7 @@
     $userEmail = sanitiseData($_POST['contactEmail']);
     $userMessage = sanitiseData($_POST['contactMessage']);
 
+
     $formError = false;
     if (empty($_POST['contactEmail'])) {
         $formError = true;
@@ -45,10 +46,10 @@
     if ($formError == false) {
         $emailAddress = $_POST['contactEmail'];
         $messageSubmitted = $_POST['contactMessage'];
-        echo $emailAddress;
-        echo"<p>";
-        echo $messageSubmitted;
 
+        $csvFile = fopen(filename:"contact.csv", mode:"a");
+        fwrite($csvFile, data:$userEmail.",".$userMessage."\n");
+        fclose($csvFile);
     }
 
 }

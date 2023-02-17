@@ -29,19 +29,28 @@
 
 
 <?php
-if(isset($_POST['formSubmit'])){
+    if(isset($_POST['formSubmit'])){
     $userEmail = sanitiseData($_POST['contactEmail']);
     $userMessage = sanitiseData($_POST['contactMessage']);
 
-    echo $userEmail;
-    echo"<p>";
-    echo $userMessage;
+    $formError = false;
+    if (empty($_POST['contactEmail'])) {
+        $formError = true;
+        echo "Enter an email address.";
+    }
+    if (empty($_POST['contactMessage'])) {
+        $formError = true;
+        echo "Enter a message to submit.";
+    }
+    if ($formError == false) {
+        $emailAddress = $_POST['contactEmail'];
+        $messageSubmitted = $_POST['contactMessage'];
+        echo $emailAddress;
+        echo"<p>";
+        echo $messageSubmitted;
+
+    }
+
 }
 
 
-?>
-
-<?php echo footer() ?>
-</body>
-<script src="js/bootstrap.bundle.min.js" ></script>
-</html>

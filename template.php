@@ -21,6 +21,11 @@
                 <li class="nav-item">
                     <a class="nav-link" href="contact.php">Contact Us</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="orderForm.php">Order Form</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="invoice.php">Invoice</a>
                 </li>
             </ul>
         </div>

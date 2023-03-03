@@ -11,7 +11,7 @@ echo $invoiceNumber;
 $currentRow = 1;
 if (($handle = fopen("orders.csv", "r")) !== FALSE) {
     while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
-        $numberOfRowsOfData = count($data);
+
         $currentRow++; //Add one to the current row
 
         // Customer Details

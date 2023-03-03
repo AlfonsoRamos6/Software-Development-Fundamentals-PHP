@@ -7,7 +7,7 @@
 <?php
 
 $invoiceNumber = intval(sanitiseData($_GET)("InvoiceNumber"));
-echo
+
 
 // Read the contents of the file
 $currentRow = 1;

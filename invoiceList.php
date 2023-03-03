@@ -2,7 +2,13 @@
     <title>Invoice List</title>
     <body>
 
+
+
 <?php
+
+$invoiceNumber = intval(sanitiseData($_GET)("InvoiceNumber"));
+echo
+
 // Read the contents of the file
 $currentRow = 1;
 if (($handle = fopen("orders.csv", "r")) !== FALSE) {
@@ -17,5 +23,6 @@ if (($handle = fopen("orders.csv", "r")) !== FALSE) {
     }
     fclose($handle);    //Closes the File
 }
+
 
 ?>

@@ -40,9 +40,11 @@
         $emailAddress = $_POST['contactEmail'];
         $messageSubmitted = $_POST['contactMessage'];
 
-        $csvFile = fopen(filename:"contact.csv", mode:"a");
-        fwrite($csvFile, data:$userEmail.",".$userMessage."\n");
-        fclose($csvFile);
+        $sqlStmt = $conn->prepare("INSERT INTO Contact (ContactEmail, Message) VALUES (ContactEmail, :Message)");
+
+//        $csvFile = fopen(filename:"contact.csv", mode:"a");
+//        fwrite($csvFile, data:$userEmail.",".$userMessage."\n");
+//        fclose($csvFile);
     }
 
 }

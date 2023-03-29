@@ -41,6 +41,9 @@
         $messageSubmitted = $_POST['contactMessage'];
 
         $sqlStmt = $conn->prepare("INSERT INTO Contact (ContactEmail, Message) VALUES (ContactEmail, :Message)");
+        $sqlStmt->bindParam('ContactEmail', $userEmail);
+        $sqlStmt->bindParam('Message', $userMessage);
+        $sqlStmt->execute();
 
 //        $csvFile = fopen(filename:"contact.csv", mode:"a");
 //        fwrite($csvFile, data:$userEmail.",".$userMessage."\n");

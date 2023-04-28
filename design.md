@@ -13,10 +13,45 @@ The user's account password will be stored as a hashed password, meaning no one 
 Administrators of the website can add, remove or edit the products of the website. Each product will have a name, a price, and a photo of the product.
  
  # Behaviour User Journey
+
 ```mermaid
 journey
-	title User Journey
-	
+ title Login / Log off
+ section Login
+  Load main (home) page: 5: Unauthenticated User
+  Enter login details: 5: Unauthenticated User
+  Press Login Button: 5: Unauthenticated User
+ section Registered
+  Perform site Actions:5: Authenticated User
+ section Logoff
+  Press Logoff Button in Navbar:5: Authenticated User
+  Close Browser:5: Unauthenticated User
+```
+```mermaid
+journey
+ title Contact Us
+ section Contact Us
+  Load Contact Us page: 5: Any User
+  Enter Email Address: 5: Any User
+  Enter Message: 5: Any User
+  Press Submit: 5: Any User
+```
+```mermaid
+journey
+ title Order
+ section Order Form
+  Load Order Form page: 5: Any User
+  Enter First Name: 5: Any User
+  Enter Second Name: 5: Any User
+  Enter Address: 5: Any User
+  Enter Phone Number: 5: Any User
+  Enter Email Address: 5: Any User
+  Enter Quantity for Products: 5: Any User
+  Press Submit: 5: Any User
 ```
 
+
+
  # Planning Diagram - Wireframes
+
+! (Main page Wireframe)(image/wireframes/wireframe.jpg)

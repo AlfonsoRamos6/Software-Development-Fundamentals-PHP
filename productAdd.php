@@ -97,7 +97,6 @@ if ($_SESSION['AccessLevel'] == 1) {
                         $stmt->bindValue(':newProdCode', $prodCode);
                         $stmt->execute();
                         header("location:index.php");
-
     <?php
 } else {
     header("location:index.php");

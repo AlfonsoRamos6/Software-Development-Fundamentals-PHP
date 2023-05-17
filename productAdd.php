@@ -4,7 +4,9 @@
 <title>Add Products</title>
 <h1 class='text-primary'>Add Products</h1>
 
-
+<?php
+$query = $conn->query("SELECT DISTINCT category FROM Products");
+?>
 
     <!-- Front End -->
 
@@ -23,6 +25,13 @@ if ($_SESSION['AccessLevel'] == 1) {
                     <p>Product Name<input type="text" name="prodName" class="form-control" required="required"></p>
                     <p>Product Category
                         <input type="text" name="prodCategory" class="form-control" required="required">
+                        <select name="prodCategory">
+                            <?php
+                            while ($row = $query->fetchArray()) {
+                                echo '<option>' . $row[0] . '</option>';
+                            }
+                            ?>
+                        </select>
                     </p>
                     <p>Quantity<input type="number" name="prodQuantity" class="form-control" required="required"></p>
                 </div>
@@ -97,8 +106,5 @@ if ($_SESSION['AccessLevel'] == 1) {
                         $stmt->bindValue(':newProdCode', $prodCode);
                         $stmt->execute();
                         header("location:index.php");
-    <?php
-} else {
-    header("location:index.php");
-}
-?>
+                    }
+                    ?>

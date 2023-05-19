@@ -107,4 +107,6 @@ if ($_SESSION['AccessLevel'] == 1) {
                         $stmt->execute();
                         header("location:index.php");
                     }
-                    ?>
+
+?>
+

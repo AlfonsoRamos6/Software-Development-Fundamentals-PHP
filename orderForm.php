@@ -67,7 +67,7 @@ while ($row = $result->fetchArray()) {
     echo "<div class='product_wrapper'>
     <form method ='post' action =''>
     <input type='hidden' name='Code' value=" . $row['Code'] . " />
-    <div class='image'><img src='images/productImages/" . $row['Image'] . "' width='100' height='100'/></div>
+    <div class='image'><img src='images/productImages/chair1.jpeg" . $row['Image'] . "' width='100' height='100'/></div>
     <div class='name'>" . $row['ProductName'] . "</div>
     <div class='price'>$" . $row['Price'] . "</div>
     <button type='submit' class='buy'>Add to Cart</button>

@@ -3,13 +3,8 @@ include "template.php";
 /**  @var $conn */
 
 /*
- * The invoices page has a number of use cases to satisfy:
-        1. If user is not logged in, then redirect them to index.php
-        2. Users to view their "open" orders as a list.
-        3. Users to view invoices from individual orders (using the order variable in url, e.g `invoice.php?order=234`)
-        4. Inform users if they have not previously made any orders.
-        5. Administrators to view all orders
-        6. Administrators can OPEN and CLOSE orders
+ * The invoices page hsa different case numbers so that both users and authenticators can do things such as opening and viewing orders and administrators can open and close orders:
+            1.
 
   @var $conn
  */
@@ -103,5 +98,26 @@ if (!isset($_SESSION["CustomerID"])) {
         }
         ?>
         <?php
+        if ($_SESSION["AccessLevel" == 1]) {
+            if (!empty($_GET["status"])) {
+                if ($_GET["status"] == "CLOSED") {
+                    $conn->exec("UPDATE Orders SET status='CLOSED' WHERE OrderNumber='$orderNumber'");
+                    $orderMessage = "Order #:" . $orderNumber . " has been closed";
+                } else {
+                    $conn->exec("UPDATE Orders SET status='OPEN' WHERE OrderNumber='$orderNumber'");
+                    $orderMessage = "Order #:" . $orderNumber . " has been re-opened";
+                }
+            }
+            if ($status == "OPEN") {
+                echo "STATUS: OPEN";
+                echo "<p><a href='invoice.php?order=" . $orderNumber . "&status=CLOSED'>Click here to close</a></p>";
+            } else {
+                echo "STATUS: CLOSED";
+                echo "<p><a href='invoice.php?order=" . $orderNumber . "&status=OPEN'>Click here to open</a></p>";
+            }
+        }
+
+
+
     }
 }

@@ -20,8 +20,18 @@ if (!isset($_SESSION["CustomerID"])) {
     if (empty($_GET["order"])) {
         // Case 2 - no 'order' variable detected in the url.
         $custID = $_SESSION['CustomerID'];
-        $query = $conn->query("SELECT OrderNumber FROM Orders WHERE CustomerID='$custID' AND Status='OPEN'");
-        $count = $conn->querySingle("SELECT OrderNumber FROM Orders WHERE customerID='$custID' AND status='OPEN'");
+
+        if ($_SESSION["AccessLevel"] == 1) {
+            // Case 5 - Generate a list of all invoices for administrators
+            $query = $conn->query("SELECT OrderNumber FROM Orders");
+            $count = $conn->querySingle("SELECT OrderNumber FROM Orders");
+        } else {
+            // Case 2 - Generate a list of open invoices for user
+            $query = $conn->query("SELECT OrderNumber FROM Orders WHERE CustomerID='$custID' AND Status='OPEN'");
+            $count = $conn->querySingle("SELECT OrderNumber FROM Orders WHERE customerID='$custID' AND status='OPEN'");
+        }
+
+
         $orderCodesForUser = [];
 
         if ($count > 0) {  // Has the User made orders previously?
